@@ -133,3 +133,8 @@ sudo apt install --fix-broken
 ```
 sudo snap install telegram-desktop
 ```
+
+# Gnome shell
+```
+sudo apt install -y chrome-gnome-shell
+```
