@@ -107,6 +107,7 @@ sudo usermod -aG docker $USER
 cd ~/Downloads
 curl -L https://download3.vmware.com/software/WKST-PLAYER-1623-New/VMware-Player-Full-16.2.3-19376536.x86_64.bundle -o vmware-player.bundle
 sudo chmod +x ./vmware-player.bundle
+sudo ./vmware-player.bundle
 ```
 
 # Virtual Box
