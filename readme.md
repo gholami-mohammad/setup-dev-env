@@ -6,6 +6,13 @@ sudo apt upgrade -y
 sudo apt install -y curl git vim openconnect openvpn build-essential
 ```
 
+# Google Chrome
+```
+cd ~/Downloads
+curl -L https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o chrome.deb
+sudo dpkg -i chrome.deb
+```
+
 # Zsh
 ```
 sudo apt install -y zsh
@@ -18,18 +25,6 @@ sudo reboot now
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-# VLC
-```
-sudo snap install vlc
-```
-
-# Google Chrome
-```
-cd ~/Downloads
-curl -L https://www.google.com/chrome/thank-you.html?statcb=0&installdataindex=empty&defaultbrowser=0# -o chrome.deb
-sudo dpkg -i chrome.deb
-```
-
 # VsCode
 ```
 cd ~/Downloads
@@ -40,7 +35,6 @@ rm vscode.deb
 
 # launche vscode and sign in to sync extensions and settings
 ```
-
 
 # DBeaver
 ```
@@ -132,6 +126,11 @@ sudo apt install --fix-broken
 # Telegram
 ```
 sudo snap install telegram-desktop
+```
+
+# VLC
+```
+sudo snap install vlc
 ```
 
 # Gnome shell
