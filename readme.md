@@ -70,7 +70,7 @@ sudo apt install -y php php-fpm php-xml php-curl php-imagick php-gd php-pgsql ph
 # Nginx
 ```
 sudo systemctl stop apache2
-sudo apt remove -y apache2
+sudo apt purge -y apache2
 sudo apt install -y nginx
 ```
 
