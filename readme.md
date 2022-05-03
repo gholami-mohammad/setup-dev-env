@@ -121,6 +121,8 @@ cd ~/Downloads
 curl -L https://download.anydesk.com/linux/anydesk_6.1.1-1_amd64.deb -o anydesk.deb
 sudo dpkg -i anydesk.deb
 sudo apt install --fix-broken
+wget http://archive.ubuntu.com/ubuntu/pool/universe/p/pangox-compat/libpangox-1.0-0_0.0.2-5.1_amd64.deb
+sudo dpkg -i libpangox-1.0-0_0.0.2-5.1_amd64.deb
 ```
 
 # Telegram
