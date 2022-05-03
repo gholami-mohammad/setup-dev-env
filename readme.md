@@ -57,6 +57,7 @@ go version
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustc -V
 cargo -V
+rustup component add rls rust-analysis rust-src
 ```
 
 # Nodejs, NVM, ang Angular
