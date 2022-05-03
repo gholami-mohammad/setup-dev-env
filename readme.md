@@ -52,6 +52,13 @@ source ~/.zshrc
 go version
 ```
 
+# Rust
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustc -V
+cargo -V
+```
+
 # Nodejs, NVM, ang Angular
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
