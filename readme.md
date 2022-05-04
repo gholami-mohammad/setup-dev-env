@@ -47,7 +47,10 @@ GOLTS=`curl -L https://golang.org/VERSION\?m\=text`
 curl -L "https://go.dev/dl/$GOLTS.linux-amd64.tar.gz" -o golang.tar.gz
 tar -xvf golang.tar.gz
 sudo mv go /usr/local/
-echo export PATH=\$PATH:/usr/local/go/bin >> ~/.zshrc
+
+echo export GOPATH=\$HOME/go >> ~/.zshrc
+echo export GOBIN=\$GOPATH/bin >> ~/.zshrc
+echo export PATH=\$PATH:/usr/local/go/bin:\$GOBIN >> ~/.zshrc
 source ~/.zshrc
 go version
 ```
