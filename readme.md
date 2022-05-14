@@ -126,6 +126,11 @@ sudo ./vmware-player.bundle
 sudo apt install virtualbox
 ```
 
+# Java and openjdk
+```
+sudo apt install openjdk-18-jdk
+```
+
 # AnyDesk
 ```
 cd ~/Downloads
