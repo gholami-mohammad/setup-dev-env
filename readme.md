@@ -150,3 +150,6 @@ sudo snap install vlc
 ```
 sudo apt install -y chrome-gnome-shell
 ```
+
+# Other apps
+- [thefuck](https://github.com/nvbn/thefuck#requirements)
