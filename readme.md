@@ -153,3 +153,12 @@ sudo apt install -y chrome-gnome-shell
 
 # Other apps
 - [thefuck](https://github.com/nvbn/thefuck#requirements)
+  ```
+  sudo apt update
+  sudo apt install python3-dev python3-pip python3-setuptools
+  pip3 install thefuck --user
+  echo 'export PATH=~/.local/bin:$PATH' >> ~/.zshrc
+  # run fuck command twice
+  fuck
+  fuck
+  ```
