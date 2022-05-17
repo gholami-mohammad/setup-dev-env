@@ -154,6 +154,7 @@ sudo snap install vlc
 # Gnome shell
 ```
 sudo apt install -y chrome-gnome-shell
+sudo apt install gnome-tweaks
 ```
 
 # Other apps
