@@ -53,6 +53,8 @@ echo export GOBIN=\$GOPATH/bin >> ~/.zshrc
 echo export PATH=\$PATH:/usr/local/go/bin:\$GOBIN >> ~/.zshrc
 source ~/.zshrc
 go version
+
+sudo apt install -y graphviz gv
 ```
 
 # Rust
