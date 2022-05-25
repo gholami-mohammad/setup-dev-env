@@ -6,3 +6,4 @@
   roles:
     - package_update
     - base_packages
+    - softwares
