@@ -1,0 +1,19 @@
+- name: Zsh
+  tags: zsh
+  apt:
+    name: zsh
+
+- name: change user shell to zsh
+  tags: zsh
+  user:
+    name: "{{ user }}"
+    shell: /bin/zsh
+
+- name: copy .zshrc file
+  tags: zsh
+  copy:
+    src: zshrc
+    dest: /home/{{ user }}/.zshrc
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
