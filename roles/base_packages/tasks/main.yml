@@ -1,0 +1,10 @@
+- name: Install base packages
+  apt:
+    name:
+      - curl
+      - git
+      - vim
+      - openconnect
+      - openvpn
+      - build-essential
+      - openssh-server

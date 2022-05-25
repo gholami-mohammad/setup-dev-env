@@ -1,0 +1,6 @@
+- name: Install updates
+  tags:
+    - always
+  apt:
+    update_cache: yes
+    upgrade: dist
