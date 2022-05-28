@@ -1,16 +1,31 @@
 - name: Zsh
-  tags: zsh
+  tags: 
+    - zsh
   apt:
     name: zsh
 
 - name: change user shell to zsh
-  tags: zsh
+  tags: 
+    - zsh
   user:
     name: "{{ user }}"
     shell: /bin/zsh
+  
+- name: Clone Oh My ZSH repo.
+  tags:
+    - zsh
+    - ohmyzsh
+  git:
+    repo: "https://github.com/ohmyzsh/ohmyzsh.git"
+    dest: "/home/{{ user }}/.oh-my-zsh"
+    update: true
+    accept_hostkey: true
+    version: "master"
 
 - name: copy .zshrc file
-  tags: zsh
+  tags: 
+    - zsh
+    - ohmyzsh
   copy:
     src: zshrc
     dest: /home/{{ user }}/.zshrc
