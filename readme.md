@@ -1,5 +1,9 @@
 # Setup my development env on Ubuntu 22.04
 
+There are 2 options:
+1. Follow the installation instruction in this readme file and config you dev env manually
+1. Use the ansible to config all of them automatically. To do this, read [this](./Ansible.md). 
+
 ```
 sudo apt update
 sudo apt upgrade -y
@@ -23,6 +27,13 @@ sudo reboot now
 # Ohmyzsh
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+# Fish shell
+```
+sudo apt install -y fish
+chsh -s $(which fish)
+sudo reboot now
 ```
 
 # VsCode

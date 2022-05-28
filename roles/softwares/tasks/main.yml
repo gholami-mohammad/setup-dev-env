@@ -1,5 +1,13 @@
 - include_vars: "{{ ansible_distribution }}.yml"
   tags: always
+
+- name: ZSH shell
+  import_tasks: ohmyzsh.yml
+  when: shell == "zsh"
+
+- name: Fish shell
+  import_tasks: fishshell.yml
+  when: shell == "fish"
+
 - block:
   - import_tasks: google_chrome.yml
-  - import_tasks: ohmyzsh.yml
