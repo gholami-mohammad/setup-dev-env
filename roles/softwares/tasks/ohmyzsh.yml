@@ -17,7 +17,7 @@
     - ohmyzsh
   git:
     repo: "https://github.com/ohmyzsh/ohmyzsh.git"
-    dest: "/home/{{ user }}/.oh-my-zsh"
+    dest: "{{ user_home_dir }}/.oh-my-zsh"
     update: true
     accept_hostkey: true
     version: "master"
@@ -28,7 +28,7 @@
     - ohmyzsh
   copy:
     src: zshrc
-    dest: /home/{{ user }}/.zshrc
+    dest: "{{ user_home_dir }}/.zshrc"
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: 0644
