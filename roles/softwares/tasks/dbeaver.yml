@@ -1,0 +1,5 @@
+- name: DBeaver CE
+  tags:
+    - dbeaver
+  community.general.snap:
+    name: dbeaver-ce
