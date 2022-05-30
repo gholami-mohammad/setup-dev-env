@@ -1,0 +1,31 @@
+- name: Add VsCode sign key
+  tags:
+    - vscode
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+
+- name: Add VsCode repository
+  tags:
+    - vscode
+  apt_repository:
+    repo: deb [arch=amd64,arm64,armhf] http://packages.microsoft.com/repos/code stable main
+    state: present
+    filename: 'vscode'
+    update_cache: yes
+
+- name: Install VsCode
+  tags:
+    - vscode
+  apt:
+    name: code
+
+- name: Copy VsCode desktop entry
+  tags:
+    - vscode
+  copy:
+    src: code.desktop
+    dest: /usr/share/applications/code.desktop
+    owner: root
+    group: root
+    mode: 0644
