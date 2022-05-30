@@ -29,13 +29,6 @@ sudo reboot now
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-# Fish shell
-```
-sudo apt install -y fish
-chsh -s $(which fish)
-sudo reboot now
-```
-
 # VsCode
 ```
 cd ~/Downloads
