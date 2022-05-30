@@ -1,0 +1,47 @@
+- name: Golang
+  tags: 
+    - golang
+    - go
+  apt:
+    name:
+      - golang
+      - graphviz
+      - gv
+    state: latest
+    update_cache: yes
+
+- name: Set Golang ENV
+  tags:
+    - golang
+    - go
+    - goenv
+  when: shell == "zsh"
+  lineinfile:
+    path: "{{ user_home_dir }}/.zshrc"
+    regexp: "export GOPATH"
+    line:  "export GOPATH=$HOME/go"
+    state: present
+
+- name: Set Golang ENV
+  tags:
+    - golang
+    - go
+    - goenv
+  when: shell == "zsh"
+  lineinfile:
+    path: "{{ user_home_dir }}/.zshrc"
+    regexp: "export GOBIN="
+    line:  "export GOBIN=$GOPATH/bin"
+    state: present
+
+- name: Set Golang ENV
+  tags:
+    - golang
+    - go
+    - goenv
+  when: shell == "zsh"
+  lineinfile:
+    path: "{{ user_home_dir }}/.zshrc"
+    regexp: "export PATH=$PATH:$GOBIN"
+    line:  "export PATH=$PATH:$GOBIN"
+    state: present

@@ -9,3 +9,4 @@
   - import_tasks: google_chrome.yml
   - import_tasks: vscode.yml
   - import_tasks: dbeaver.yml
+  - import_tasks: golang.yml
