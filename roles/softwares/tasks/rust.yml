@@ -1,0 +1,42 @@
+- name: check that cargo already installed
+  tags: rust
+  become_user: "{{user}}"
+  shell: 
+    cmd: cargo -v
+  args:
+    executable: /bin/zsh
+  register: cargo_installed
+  ignore_errors: true
+
+- name: download rust installer
+  tags: rust
+  when: cargo_installed.failed == true
+  become_user: "{{user}}"
+  get_url:
+    url: https://sh.rustup.rs
+    dest: ~/rustup.sh
+    mode: 0755
+
+- name: install Rust
+  tags: rust
+  when: cargo_installed.failed == true
+  become_user: "{{user}}"
+  shell:
+    cmd: ~/rustup.sh -y --component="rls rust-analysis rust-src"
+
+- name: install Rust zsh completion
+  tags: rust
+  when: cargo_installed.failed == true
+  become_user: "{{user}}"
+  shell:
+    cmd: . $HOME/.cargo/env && rustup completions zsh > ~/.zshfunc/_rustup
+
+- name: set Rust ENV
+  tags: rust
+  when: shell == "zsh" and cargo_installed.failed == true
+  become_user: "{{user}}"
+  lineinfile:
+    path: "{{ user_home_dir }}/.zshrc"
+    regexp: ". $HOME/.cargo/env"
+    line:  ". $HOME/.cargo/env"
+    state: present
