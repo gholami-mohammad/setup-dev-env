@@ -10,7 +10,17 @@
   user:
     name: "{{ user }}"
     shell: /bin/zsh
-  
+
+- name: create .zshfunc directory to add more functions to zsh
+  tags:
+    - zsh
+  file:
+    path: "{{ user_home_dir }}/.zshfunc"
+    state: directory
+    owner: "{{user}}"
+    group: "{{user}}"
+    mode: 0755
+
 - name: Clone Oh My ZSH repo.
   tags:
     - zsh
