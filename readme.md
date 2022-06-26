@@ -69,7 +69,7 @@ cargo -V
 rustup component add rls rust-analysis rust-src
 ```
 
-# Nodejs, NVM, ang Angular
+# Nodejs, NVM, and Angular
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 source ~/.zshrc

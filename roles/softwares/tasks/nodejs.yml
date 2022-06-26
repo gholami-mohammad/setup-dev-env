@@ -1,0 +1,39 @@
+- name: download nvm installer script
+  tags:
+    - nodejs
+    - nvm
+  become_user: "{{user}}"
+  get_url:
+    url: "https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh"
+    dest: "{{ user_home_dir }}/nvm-install.sh"
+    owner: "{{user}}"
+    group: "{{user}}"
+    mode: 0755
+
+- name: install nvm
+  tags:
+    - nodejs
+    - nvm
+  become_user: "{{user}}"
+  shell:
+    cmd: "{{ user_home_dir }}/nvm-install.sh"
+
+- name: reload zshrc
+  tags:
+    - nodejs
+    - nvm
+  when: shell == "zsh"
+  become_user: "{{user}}"
+  shell:
+    cmd: "source {{ user_home_dir }}/.zshrc"
+  args:
+    executable: /bin/zsh
+
+- name: install nodejs LTS version
+  tags:
+    - nodejs
+  become_user: "{{user}}"
+  shell:
+    cmd: "source ~/.zshrc && nvm install --lts"
+  args:
+    executable: /bin/zsh
