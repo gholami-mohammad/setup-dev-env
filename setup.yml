@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - package_update
+    - base_packages
+    - ohmyzsh
+    - google_chrome
+    - vscode
+    - dbeaver
+    - golang
+    - rust
+    - nodejs
+    - php
+    - nginx

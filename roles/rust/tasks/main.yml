@@ -1,3 +1,6 @@
+- include_vars: "{{ ansible_distribution }}.yml"
+  tags: always
+
 - name: check that cargo already installed
   tags: rust
   become_user: "{{user}}"
