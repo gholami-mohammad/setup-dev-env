@@ -1,0 +1,37 @@
+- name: "change {{username}} user's shell to zsh"
+  tags: 
+    - zsh
+  user:
+    name: "{{username}}"
+    shell: /bin/zsh
+  
+- name: clone ohmyzsh repo.
+  tags:
+    - zsh
+    - ohmyzsh
+  git:
+    repo: "https://github.com/ohmyzsh/ohmyzsh.git"
+    dest: "{{home_dir}}/.oh-my-zsh"
+    update: true
+    accept_hostkey: true
+    version: "master"
+
+- name: "copy .zshrc file for {{username}}"
+  tags: 
+    - zsh
+    - ohmyzsh
+  copy:
+    src: zshrc
+    dest: "{{home_dir}}/.zshrc"
+    owner: "{{username}}"
+    mode: 0644
+
+- name: create .zshfunc directory to add more functions to zsh
+  tags:
+    - zsh
+  file:
+    path: "{{home_dir}}/.zshfunc"
+    state: directory
+    owner: "{{username}}"
+    group: "{{username}}"
+    mode: 0755

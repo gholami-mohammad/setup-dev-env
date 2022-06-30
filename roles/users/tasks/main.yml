@@ -1,0 +1,7 @@
+- include_vars: "secrets.yml"
+  tags: always
+- include_vars: "users.yml"
+  tags: always
+
+- block:
+  - import_tasks: sysadmin.yml

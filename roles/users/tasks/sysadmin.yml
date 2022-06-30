@@ -1,0 +1,36 @@
+- name: create sysadmin group
+  tags: users
+  group:
+    name: "{{users.sysadmin.group}}"
+    system: no
+    gid: "{{users.sysadmin.gid}}"
+
+- name: create sysadmin user
+  tags: users
+  user:
+    name: "{{users.sysadmin.username}}"
+    group: "{{users.sysadmin.group}}"
+    shell: "/bin/{{users.sysadmin.shell}}"
+    password: "{{secrets.users.sysadmin.password | password_hash('sha512')}}"
+    create_home: yes
+    comment: "SysAdmin"
+    state: present
+    uid: "{{users.sysadmin.uid}}"
+
+- name: copy sysadmin sudoer file to sudoers.d
+  tags: users
+  copy:
+    src: sysadmin_user_suderfile
+    dest: "/etc/sudoers.d/{{users.sysadmin.username}}"
+    owner: root
+    group: root
+    mode: 0440
+    validate: 'visudo -cf %s'
+
+- name: setup ohmyzsh for the systadmin user
+  tags: users
+  import_tasks: ohmyzsh.yml
+  when: users.sysadmin.shell == "zsh"
+  vars:
+    username: "{{users.sysadmin.username}}"
+    home_dir: "{{users.sysadmin.home_dir}}"
