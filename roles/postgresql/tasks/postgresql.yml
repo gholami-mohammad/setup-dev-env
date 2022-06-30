@@ -1,0 +1,45 @@
+- name: make sure psycopg2 is installed
+  tags:
+    - postgresql
+  pip:
+    name: psycopg2-binary
+    state: present
+
+- name: add sign key
+  tags:
+    - postgresql
+  apt_key:
+    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+    state: present
+
+- name: add apt repository
+  tags: 
+    - postgresql
+  apt_repository:
+    repo: deb http://apt.postgresql.org/pub/repos/apt/ jammy-pgdg main
+    state: present
+    filename: pgdg
+    update_cache: yes
+
+- name: install postgresql 14
+  tags: 
+    - postgresql
+  apt:
+    name: postgresql-14
+
+- name: install PostGIS
+  tags: 
+    - postgresql
+    - postgis
+  apt:
+    name: 
+      - postgresql-14-postgis-3
+      - postgis
+      - postgresql-14-pgrouting
+      - osm2pgrouting
+
+- name: install libpq-dev
+  tags: 
+    - postgresql
+  apt:
+    name: libpq-dev

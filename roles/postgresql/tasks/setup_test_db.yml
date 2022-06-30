@@ -1,0 +1,98 @@
+- name: create database user 
+  tags: 
+    - postgresql_config
+  become_user: postgres
+  community.postgresql.postgresql_user:
+    name: "{{secrets.postgresql.sysadmin.user}}"
+    password: "{{secrets.postgresql.sysadmin.password}}"
+    role_attr_flags: SUPERUSER
+
+- name: create DB
+  tags: 
+    - postgresql_config
+  become_user: postgres
+  community.postgresql.postgresql_db:
+    name: "{{secrets.postgresql.sysadmin.db}}"
+    owner: "{{secrets.postgresql.sysadmin.user}}"
+    encoding: UTF-8
+
+- name: add postgis extension to the sysadmin's database
+  tags: 
+    - postgresql_config
+  become_user: postgres
+  postgresql_ext:
+    name: postgis
+    db: "{{secrets.postgresql.sysadmin.db}}"
+    state: present
+
+- name: add postgis_raster extension to the sysadmin's database
+  tags: 
+    - postgresql_config
+  become_user: postgres
+  postgresql_ext:
+    name: postgis_raster
+    db: "{{secrets.postgresql.sysadmin.db}}"
+    state: present
+
+- name: add postgis_topology extension to the sysadmin's database
+  tags: 
+    - postgresql_config
+  become_user: postgres
+  postgresql_ext:
+    name: postgis_topology
+    db: "{{secrets.postgresql.sysadmin.db}}"
+    state: present
+
+- name: add postgis_sfcgal extension to the sysadmin's database
+  tags: 
+    - postgresql_config
+  become_user: postgres
+  postgresql_ext:
+    name: postgis_sfcgal
+    db: "{{secrets.postgresql.sysadmin.db}}"
+    state: present
+
+- name: add fuzzystrmatch extension to the sysadmin's database
+  tags: 
+    - postgresql_config
+  become_user: postgres
+  postgresql_ext:
+    name: fuzzystrmatch
+    db: "{{secrets.postgresql.sysadmin.db}}"
+    state: present
+
+- name: add address_standardizer extension to the sysadmin's database
+  tags: 
+    - postgresql_config
+  become_user: postgres
+  postgresql_ext:
+    name: address_standardizer
+    db: "{{secrets.postgresql.sysadmin.db}}"
+    state: present
+
+- name: add postgis_tiger_geocoder extension to the sysadmin's database
+  tags: 
+    - postgresql_config
+  become_user: postgres
+  postgresql_ext:
+    name: postgis_tiger_geocoder
+    db: "{{secrets.postgresql.sysadmin.db}}"
+    state: present
+
+- name: add uuid-ossp extension to the sysadmin's database
+  tags: 
+    - postgresql_config
+  become_user: postgres
+  postgresql_ext:
+    name: uuid-ossp
+    db: "{{secrets.postgresql.sysadmin.db}}"
+    state: present
+
+- name: add pgcrypto extension to the sysadmin's database
+  tags: 
+    - postgresql_config
+  become_user: postgres
+  postgresql_ext:
+    name: pgcrypto
+    db: "{{secrets.postgresql.sysadmin.db}}"
+    state: present

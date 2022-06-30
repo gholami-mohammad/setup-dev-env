@@ -1,0 +1,6 @@
+- include_vars: "secrets.yml"
+  tags: always
+
+- block:
+  - import_tasks: postgresql.yml
+  - import_tasks: setup_test_db.yml

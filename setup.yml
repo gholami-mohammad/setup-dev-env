@@ -13,3 +13,4 @@
     - nodejs
     - php
     - nginx
+    - postgresql
