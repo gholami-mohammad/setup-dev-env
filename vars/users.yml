@@ -1,0 +1,8 @@
+users:
+  sysadmin:
+    username: sysadmin
+    group: sysadmin
+    home_dir: /home/sysadmin
+    shell: zsh
+    uid: 1313
+    gid: 1313

@@ -1,4 +1,4 @@
-- include_vars: "{{ ansible_distribution }}.yml"
+- include_vars: "users.yml"
   tags: always
 
 - name: Golang
@@ -18,9 +18,9 @@
     - golang
     - go
     - goenv
-  when: shell == "zsh"
+  when: users.sysadmin.shell == "zsh"
   lineinfile:
-    path: "{{ user_home_dir }}/.zshrc"
+    path: "{{users.sysadmin.home_dir}}/.zshrc"
     regexp: "export GOPATH"
     line:  "export GOPATH=$HOME/go"
     state: present
@@ -30,9 +30,9 @@
     - golang
     - go
     - goenv
-  when: shell == "zsh"
+  when: users.sysadmin.shell == "zsh"
   lineinfile:
-    path: "{{ user_home_dir }}/.zshrc"
+    path: "{{users.sysadmin.home_dir}}/.zshrc"
     regexp: "export GOBIN="
     line:  "export GOBIN=$GOPATH/bin"
     state: present
@@ -42,9 +42,9 @@
     - golang
     - go
     - goenv
-  when: shell == "zsh"
+  when: users.sysadmin.shell == "zsh"
   lineinfile:
-    path: "{{ user_home_dir }}/.zshrc"
+    path: "{{users.sysadmin.home_dir}}/.zshrc"
     regexp: "export PATH=$PATH:$GOBIN"
     line:  "export PATH=$PATH:$GOBIN"
     state: present

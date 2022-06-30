@@ -1,9 +1,9 @@
-- include_vars: "{{ ansible_distribution }}.yml"
+- include_vars: "users.yml"
   tags: always
 
 - name: check that cargo already installed
   tags: rust
-  become_user: "{{user}}"
+  become_user: "{{users.sysadmin.username}}"
   shell: 
     cmd: cargo -v
   args:
@@ -14,7 +14,7 @@
 - name: download rust installer
   tags: rust
   when: cargo_installed.failed == true
-  become_user: "{{user}}"
+  become_user: "{{users.sysadmin.username}}"
   get_url:
     url: https://sh.rustup.rs
     dest: ~/rustup.sh
@@ -23,23 +23,23 @@
 - name: install Rust
   tags: rust
   when: cargo_installed.failed == true
-  become_user: "{{user}}"
+  become_user: "{{users.sysadmin.username}}"
   shell:
     cmd: ~/rustup.sh -y --component="rls rust-analysis rust-src"
 
 - name: install Rust zsh completion
   tags: rust
   when: cargo_installed.failed == true
-  become_user: "{{user}}"
+  become_user: "{{users.sysadmin.username}}"
   shell:
     cmd: . $HOME/.cargo/env && rustup completions zsh > ~/.zshfunc/_rustup
 
 - name: set Rust ENV
   tags: rust
-  when: shell == "zsh" and cargo_installed.failed == true
-  become_user: "{{user}}"
+  when: users.sysadmin.shell == "zsh" and cargo_installed.failed == true
+  become_user: "{{users.sysadmin.username}}"
   lineinfile:
-    path: "{{ user_home_dir }}/.zshrc"
+    path: "{{users.sysadmin.home_dir}}/.zshrc"
     regexp: ". $HOME/.cargo/env"
     line:  ". $HOME/.cargo/env"
     state: present
