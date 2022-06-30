@@ -3,4 +3,4 @@
 
 - block:
   - import_tasks: postgresql.yml
-  - import_tasks: setup_test_db.yml
+  - import_tasks: sysadmin_user_db.yml
