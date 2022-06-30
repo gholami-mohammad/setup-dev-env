@@ -8,3 +8,7 @@
       - openvpn
       - build-essential
       - openssh-server
+      - zsh
+      - acl
+      - python3-pip
+      - unzip
