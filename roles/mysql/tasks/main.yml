@@ -1,0 +1,6 @@
+- include_vars: "secrets.yml"
+  tags: always
+
+- block:
+  - import_tasks: mysql.yml
+  - import_tasks: setup.yml

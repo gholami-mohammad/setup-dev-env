@@ -1,0 +1,48 @@
+- name: remove anonymous user account
+  tags: mysql
+  community.mysql.mysql_user:
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    name: ''
+    host_all: yes
+    state: absent
+
+- name: disallow root login remotely
+  tags: mysql
+  command: |
+    mysql -ne "{{item}}"
+  with_items:
+    - DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1')
+  changed_when: False
+
+- name: remove test database and access to it
+  tags: mysql
+  command: |
+    mysql -ne "{{item}}"
+  with_items:
+    - DROP DATABASE IF EXISTS test
+    - DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%'
+  changed_when: False
+
+- name: reload privilege tables
+  tags: mysql
+  command: |
+    mysql -ne "{{ item }}"
+  with_items:
+    - FLUSH PRIVILEGES
+  changed_when: False
+
+- name: create mysql sysadmin user with all database privileges
+  tags: mysql
+  community.mysql.mysql_user:
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    name: "{{secrets.mysql.sysadmin.user}}"
+    password: "{{secrets.mysql.sysadmin.password}}"
+    priv: '*.*:ALL'
+    state: present
+
+- name: create a new database for sysadmin
+  tags: mysql
+  community.mysql.mysql_db:
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    name: "{{secrets.mysql.sysadmin.db}}"
+    state: present

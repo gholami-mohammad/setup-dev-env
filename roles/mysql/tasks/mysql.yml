@@ -1,0 +1,22 @@
+- name: install mysql 8
+  tags: mysql
+  apt:
+    name: 
+      - mysql-server-8.0
+      - mysql-client-8.0
+      - mysql-common
+
+- name: make sure PyMySQL is installed
+  tags: mysql
+  pip:
+    name: PyMySQL
+    state: present
+    executable: pip3
+
+- name: ensure mysql service is running
+  tags: mysql
+  systemd:
+    name: mysql
+    state: started
+    enabled: yes
+
