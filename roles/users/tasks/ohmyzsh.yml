@@ -35,3 +35,14 @@
     owner: "{{username}}"
     group: "{{username}}"
     mode: 0755
+
+- name: create .zshfunc directory to add more functions to zsh
+  tags:
+    - zsh
+  file:
+    path: "{{home_dir}}/.cache/oh-my-zsh"
+    state: directory
+    owner: "{{username}}"
+    group: "{{username}}"
+    mode: 0755
+    recurse: yes
