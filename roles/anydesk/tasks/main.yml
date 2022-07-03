@@ -1,0 +1,23 @@
+- name: download anydesk deb file
+  tags: anydesk
+  get_url:
+    url: https://download.anydesk.com/linux/anydesk_6.1.1-1_amd64.deb
+    dest: ~/anydesk.deb
+    mode: 0755
+
+- name: download libpangox
+  tags: anydesk
+  get_url:
+    url: http://archive.ubuntu.com/ubuntu/pool/universe/p/pangox-compat/libpangox-1.0-0_0.0.2-5.1_amd64.deb
+    dest: ~/libpangox.deb
+    mode: 0755
+
+- name: install libpangox
+  tags: anydesk
+  apt:
+    deb: ~/libpangox.deb
+  
+- name: install anydesk
+  tags: anydesk
+  apt:
+    deb: ~/anydesk.deb
