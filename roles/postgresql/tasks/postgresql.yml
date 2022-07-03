@@ -10,13 +10,14 @@
     - postgresql
   apt_key:
     url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+    keyring: /usr/share/keyrings/postgresql.gpg
     state: present
 
 - name: add apt repository
   tags: 
     - postgresql
   apt_repository:
-    repo: deb http://apt.postgresql.org/pub/repos/apt/ jammy-pgdg main
+    repo: deb [arch=amd64 signed-by=/usr/share/keyrings/postgresql.gpg] http://apt.postgresql.org/pub/repos/apt/ jammy-pgdg main
     state: present
     filename: pgdg
     update_cache: yes

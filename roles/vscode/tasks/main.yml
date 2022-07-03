@@ -1,17 +1,18 @@
-- name: Add VsCode sign key
+- name: add vscode sign key
   tags:
     - vscode
   apt_key:
     url: https://packages.microsoft.com/keys/microsoft.asc
+    keyring: /usr/share/keyrings/microsoft.gpg
     state: present
 
-- name: Add VsCode repository
-  tags:
+- name: add vscode apt repository
+  tags: 
     - vscode
   apt_repository:
-    repo: deb [arch=amd64,arm64,armhf] http://packages.microsoft.com/repos/code stable main
+    repo: "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] http://packages.microsoft.com/repos/code stable main"
     state: present
-    filename: 'vscode'
+    filename: vscode
     update_cache: yes
 
 - name: Install VsCode

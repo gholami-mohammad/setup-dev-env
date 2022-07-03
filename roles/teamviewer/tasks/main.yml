@@ -1,11 +1,20 @@
-- name: download teamviewer deb file
+- name: add teamviewer sign key
   tags: teamviewer
-  get_url:
-    url: https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
-    dest: ~/teamviewer.deb
-    mode: 0755
+  apt_key:
+    url: https://download.teamviewer.com/download/linux/signature/TeamViewer2017.asc
+    keyring: /usr/share/keyrings/teamviewer.gpg
+    state: present
 
+- name: add teamviewer apt repository
+  tags: teamviewer
+  apt_repository:
+    repo: deb [arch=amd64 signed-by=/usr/share/keyrings/teamviewer.gpg] https://linux.teamviewer.com/deb stable main
+    state: present
+    filename: teamviewer
+    update_cache: yes
+  
 - name: install teamviewer
   tags: teamviewer
   apt:
-    deb: ~/teamviewer.deb
+    name: teamviewer
+    state: latest
