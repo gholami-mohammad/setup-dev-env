@@ -1,0 +1,4 @@
+- name: install telegram
+  tags: telegram
+  community.general.snap:
+    name: telegram-desktop

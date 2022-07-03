@@ -1,0 +1,11 @@
+- name: download teamviewer deb file
+  tags: teamviewer
+  get_url:
+    url: https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+    dest: ~/teamviewer.deb
+    mode: 0755
+
+- name: install teamviewer
+  tags: teamviewer
+  apt:
+    deb: ~/teamviewer.deb
