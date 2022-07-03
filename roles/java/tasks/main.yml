@@ -1,0 +1,8 @@
+- name: install openjdk
+  tags: 
+    - java
+    - jdk
+    - openjdk
+  apt:
+    name: openjdk-18-jdk
+    state: latest
