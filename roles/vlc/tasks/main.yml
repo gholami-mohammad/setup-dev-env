@@ -1,0 +1,4 @@
+- name: install vlc
+  tags: vlc
+  community.general.snap:
+    name: vlc
