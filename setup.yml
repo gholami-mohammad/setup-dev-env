@@ -16,3 +16,4 @@
     - postgresql
     - mysql
     - docker
+    - virtualbox

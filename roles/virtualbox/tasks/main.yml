@@ -1,0 +1,5 @@
+- name: install virtualbox
+  tags: virtualbox
+  apt:
+    name: virtualbox
+    state: latest
