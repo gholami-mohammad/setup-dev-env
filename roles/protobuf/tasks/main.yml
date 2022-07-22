@@ -1,0 +1,37 @@
+- include_vars: "users.yml"
+  tags: always
+
+- name: install protobuf dependencies
+  tags: protobuf 
+  apt:
+    name:
+      - autoconf
+      - automake
+      - libtool
+      - curl
+      - make
+      - g++
+      - unzip
+
+- name: download the protobuf release
+  tags: protobuf 
+  become_user: "{{users.sysadmin.username}}"
+  unarchive:
+    src: https://github.com/protocolbuffers/protobuf/releases/download/v21.3/protobuf-all-21.3.tar.gz
+    dest: "{{users.sysadmin.home_dir}}"
+    mode: 0755
+    remote_src: yes
+
+- name: install protobuf from the source
+  tags: protobuf 
+  become_user: "{{users.sysadmin.username}}"
+  become: true
+  args:
+    chdir: "{{users.sysadmin.home_dir}}/protobuf-21.3"
+  command: "{{item}}"
+  with_items:
+    - ./configure
+    - make
+    - make check
+    - make install
+    - ldconfig
