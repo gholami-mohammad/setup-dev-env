@@ -6,4 +6,24 @@
   roles:
     - package_update
     - base_packages
-    - softwares
+    - users
+    - google_chrome
+    - vscode
+    - dbeaver
+    - golang
+    - rust
+    - nodejs
+    - php
+    - nginx
+    - postgresql
+    - mysql
+    - docker
+    - virtualbox
+    - java
+    - anydesk
+    - teamviewer
+    - telegram
+    - vlc
+    - gnome_shell
+    - protobuf
+    - vmware-player
