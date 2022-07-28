@@ -1,7 +1,7 @@
 # Setup my development env on Ubuntu 22.04
 
 There are 2 options:
-1. Follow the installation instruction in this readme file and config you dev env manually
+1. Follow the installation instruction in this readme file and config your dev env manually
 1. Use the ansible to config all of them automatically. To do this, read [this](./Ansible.md). 
 
 ```
@@ -119,14 +119,6 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
 
-# Vmware
-```
-cd ~/Downloads
-curl -L https://download3.vmware.com/software/WKST-PLAYER-1623-New/VMware-Player-Full-16.2.3-19376536.x86_64.bundle -o vmware-player.bundle
-sudo chmod +x ./vmware-player.bundle
-sudo ./vmware-player.bundle
-```
-
 # Virtual Box
 ```
 sudo apt install virtualbox
@@ -174,3 +166,13 @@ sudo apt install gnome-tweaks
   fuck
   fuck
   ```
+# Protobuf
+https://github.com/protocolbuffers/protobuf/blob/main/src/README.md
+
+# Vmware
+```
+cd ~/Downloads
+curl -L https://download3.vmware.com/software/WKST-PLAYER-1623-New/VMware-Player-Full-16.2.3-19376536.x86_64.bundle -o vmware-player.bundle
+sudo chmod +x ./vmware-player.bundle
+sudo ./vmware-player.bundle
+```
