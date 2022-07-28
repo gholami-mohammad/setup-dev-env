@@ -1,0 +1,12 @@
+- name: download vmware-player installation file
+  tags: vmware
+  get_url:
+    url: https://download3.vmware.com/software/WKST-PLAYER-1623-New/VMware-Player-Full-16.2.3-19376536.x86_64.bundle
+    dest: ./vmware-player.bundle
+    mode: 0755
+
+- name: install vmware player
+  tags: vmware
+  command: "{{item}}"
+  with_items: 
+    - ./vmware-player.bundle
